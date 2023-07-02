@@ -1,0 +1,128 @@
+<html>
+<head>
+    <title>Mathematics Game</title>
+    <style>
+
+        body{
+
+            background: rgb(255, 98, 98);
+        }
+        #head{
+        
+            text-align: center;
+            padding-top: 60px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 50px;
+            
+        }
+        #canvas{
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(239, 255, 10, 0.938);
+            width: 100%;
+            height: 300px;
+            margin: 70px auto;
+        }
+        
+        #primary-number, #secondary-number{
+            display:flex;
+            align-items:center;
+            justify-content: center;
+            font-size: 60px;
+            width: 125px;
+            height: 125px;
+            box-sizing: border-box
+        }
+        
+        #primary-number{
+            border: solid 4px rgb(230, 15, 15);
+        }
+        
+        #secondary-number{
+            border: solid 4px blue;
+        }
+        
+        #add, #equal{
+            font-weight: bold;
+            font-size: 40px;
+            padding: 5px;
+        }
+        input{
+            border: solid 2px rgb(30, 255, 0);
+            width: 150px;
+            height: 30px;
+            padding-left: 25px;
+        }
+        
+        button{
+            width: 100px;
+            height: 35px;
+            margin: 5px;
+            background: red;
+            color: white;
+            border: 1px solid lightgrey;
+        }
+        
+        </style>
+</head>
+<body>
+    <div id="head">Number Game</div>
+    <div id="canvas">
+        <div id="primary-number"></div>
+        <div id="add">+</div>
+        <div id="secondary-number"></div>
+        <div id="equal">=</div>
+        <div>
+            <input type="number" id="guess">
+        </div>
+        <div>
+            <button id="btn">check</button>
+        </div>
+    </div>
+
+<script>
+
+//generate random numbers
+var firstNumber = parseInt(Math.random()*10);
+var secondNumber = parseInt(Math.random()*10);
+
+//get the total
+var total = firstNumber + secondNumber;
+
+
+//display numbers on web browser    
+var primary = document.getElementById('primary-number');
+    primary.innerHTML = `<p>${firstNumber}</p>`;
+
+var secondary = document.getElementById('secondary-number');
+    secondary.innerHTML = `<p>${secondNumber}</p>`
+
+
+//get answer from user
+var button = document.getElementById('btn')
+
+button.addEventListener('click', function()
+{
+
+var guess = document.getElementById('guess').value;
+    guess = Number(guess);
+
+//check answer
+if (guess === total)
+{
+    alert('Correct');
+    window.location.reload();
+} 
+else 
+{
+    alert('Oops! Wrong Answer. The correct answer is ' + total + '.');
+    window.location.reload();
+
+}
+});
+
+    </script>
+</body>
+</html>
